@@ -1,0 +1,1634 @@
+/* Making variables */
+:root {
+    --dark: #1D1D1F;
+    --light: #f5f5f7;
+    --gutter: 1rem;
+    --dark-anchor: #0066CC;
+    --light-anchor: #2997FF;
+    --lighter-dark: #6e6e73;
+}
+
+/* Over all Setting everywhere */
+
+html {
+    font-family: "Roboto", "sans serif";
+    /* Setting font size to 10px */
+    font-size: 62.5%;
+    text-align: center;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a {
+    text-decoration: none;
+}
+
+.cta-link:hover {
+    text-decoration: underline;
+}
+
+.light {
+    color: var(--light);
+}
+
+.light .cta-link {
+    color: var(--light-anchor);
+}
+
+.dark {
+    color: var(--dark);
+}
+
+.dark .cta-link {
+    color: var(--dark-anchor);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gutter);
+}
+
+
+/* Styling The Header & Navigation bar */
+
+.header {
+    position: fixed;
+    --navbar-height: 5em;
+    width: 100%;
+    top: 0;
+    z-index: 9;
+    overflow: hidden;
+    transition-property: max-height, background-color, transform;
+    transition-duration: 0.5s;
+    backdrop-filter: blur(10px);
+    max-height: var(--navbar-height);
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 110vh;
+}
+
+.open-menu {
+    max-height: 110vh;
+    backdrop-filter: none;
+    background-color: #000000;
+}
+
+.header-nav {
+    height: fit-content;
+    width: 100%;
+    overflow: hidden;
+    background-color: inherit;
+}
+
+.nav-mobile-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    height: var(--navbar-height);
+    padding: 0 1em;
+    overflow: hidden;
+    background-color: inherit;
+    transition: height 0.5s ease;
+}
+
+.menu-btn {
+    height: 3.5em;
+    width: 3.5em;
+    cursor: pointer;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    position: relative;
+}
+
+.rect {
+    position: absolute;
+    background-color: white;
+    border-radius: 5px;
+    top: 48%;
+    left: 25%;
+    width: 50%;
+    height: 2%;
+    transition-property: top, transform;
+    transition-duration: 0.3s;
+    transition-delay: 0.15s, 0s;
+}
+
+.rect1 {
+    top: 38%;
+}
+
+.rect2 {
+    top: 60%;
+}
+
+.open-menu .rect {
+    transition-delay: 0s, 0.15s;
+    top: 48%;
+}
+
+.open-menu .rect1 {
+    transform: rotate(45deg);
+}
+
+.open-menu .rect2 {
+    transform: rotate(-45deg);
+}
+
+.nav-mobile-container .icon {
+    display: flex;
+    margin: 0;
+    height: 0.5em;
+    width: 2em;
+    background-position: 50% 50%;
+    background-size: 50%;
+}
+
+.nav-mobile-container .cart-icon {
+    transition-property: opacity, transform;
+    transition-duration: 0.3s;
+}
+
+.open-menu .nav-mobile-container .cart-icon {
+    transform: translateY(0.3em);
+    opacity: 0;
+}
+
+.nav-box-container {
+    width: 100%;
+    height: 80vh;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding: 0 1.7em;
+    opacity: 1;
+}
+
+.open-menu .nav-box-container {
+    transition: opacity, transform;
+    transition-duration: 0.3s;
+}
+
+.open-menu .nav-hide {
+    transform: translateY(44px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-link-box {
+    display: flex;
+    z-index: 9;
+    overflow: hidden;
+    margin: 0 3em;
+    height: fit-content;
+}
+
+.nav-link {
+    font-size: 1.8rem;
+    font-weight: 300;
+    opacity: 0.7;
+    transition: opacity 0.3s ease-in-out;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.75em 0;
+    width: 100%;
+    text-align: left;
+}
+
+.nav-link-box:nth-last-child(3) .nav-link {
+    border: none;
+}
+
+.nav-link:hover {
+    text-decoration: none;
+    opacity: 1;
+    color: #ffffff;
+}
+
+.icon {
+    border: none
+}
+
+/* Styling the curtain */
+
+.curtain {
+    content: "";
+    width: auto;
+    background-color: inherit;
+    height: 6em;
+    overflow: visible;
+    transition: height 0.5s ease;
+    position: relative;
+}
+
+/* Styling the Search bar */
+
+.search-recent-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    height: fit-content;
+    box-sizing: border-box;
+    position: absolute;
+}
+
+.search-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: var(--navbar-height);
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    padding-bottom: 1em;
+    /* border: 2px solid red; */
+}
+
+.search-icon-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 4em;
+    margin: 0 1em;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-color: var(--dark);
+    border-radius: 1em;
+    padding: 0 0.8em;
+    z-index: 1;
+    transition: width 0.5s ease;
+}
+
+.cancel-btn-container {
+    width: fit-content;
+    max-width: 0;
+    transition-property: max-width;
+    transition-duration: 0.3s;
+    box-sizing: border-box;
+}
+
+.cancel-btn {
+    opacity: 0;
+    cursor: pointer;
+    background-color: inherit;
+    color: var(--light-anchor);
+    font-size: 1.8rem;
+    padding: 0.5em 1em;
+}
+
+.cancel-show {
+    max-width: 10em;
+}
+
+.cancel-show .cancel-btn {
+    opacity: 1;
+    transition: opacity 0.3s 0.1s;
+}
+
+.search-input {
+    font-size: 1.8rem;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    color: var(--light);
+    cursor: text;
+    padding-left: 0.2em;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+/* Styling the Recent visited links container */
+
+.recent-container {
+    width: 100%;
+    height: 100%;
+    padding: 2em 4.7em;
+    box-sizing: border-box;
+    opacity: 0;
+}
+
+.open-menu .recent-container {
+    transform: translateY(-44px);
+    transition-property: transform, opacity;
+    transition-duration: 0.3s, 0.1s;
+}
+
+.open-menu .recent-show {
+    transition-duration: 0.3s;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.recent-heading-search-wrapper {
+    width: 100%;
+    max-width: var(--search-max-width);
+    height: fit-content;
+    border-bottom-left-radius: 3% 8%;
+    border-bottom-right-radius: 3% 8%;
+    overflow: hidden;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: white;
+    animation-duration: 0.2s;
+    opacity: 1;
+    background-color: inherit;
+    transition: opacity 0.3s ease;
+}
+
+.recent-heading {
+    font-size: 1.4rem;
+    color: var(--lighter-dark);
+    text-align: left;
+    padding: 0.3em 0;
+    margin-bottom: 1em;
+    font-weight: 400;
+    pointer-events: none;
+    opacity: 1;
+}
+
+.recent-search-wrapper {
+    background-color: inherit;
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1em;
+}
+
+.recent-search {
+    padding-left: 0;
+    text-align: left;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 400;
+    cursor: pointer;
+    opacity: 1;
+    padding: 0.2em 0;
+}
+
+
+.recent-search:hover {
+    color: var(--light-anchor);
+}
+
+
+
+/* Styling all icons & their size  */
+
+.icon {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: auto;
+    height: 1em;
+    width: 2em;
+    cursor: pointer;
+}
+
+.nav-box-container .icon {
+    display: none;
+}
+
+.logo-icon {
+    background-image: url("images/icons_svg/apple01.svg");
+}
+
+.search-icon {
+    background-image: url("images/icons_svg/apple03.svg");
+}
+
+.cart-icon {
+    background-image: url("images/icons_svg/apple02.svg");
+}
+
+.close-icon {
+    background-image: url("images/icons_svg/close.svg");
+    display: none;
+}
+
+.search-icon-wrapper .icon {
+    height: 100%;
+    opacity: 0.5;
+}
+
+.search-submit-icon {
+    background-image: url("images/icons_svg/apple03.svg");
+
+}
+
+/* Setting animation classes */
+
+.shrink {
+    animation-name: shrink;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+.expand {
+    animation-name: expand;
+    animation-timing-function: ease-out;
+    animation-fill-mode: backwards;
+}
+
+.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+.padding-in {
+    animation-name: padding-in;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+.slide-in {
+    animation-name: slide-in;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+.cart-hide {
+    transform: translateY(0.3em);
+    opacity: 0;
+}
+
+/* *****************Setting Animations******************** */
+
+@keyframes shrink {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    90% {
+        transform: scale(0.2);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes expand {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    10% {
+        transform: scale(0.2);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes padding-in {
+    0% {
+        opacity: 0;
+        padding-left: 3em;
+    }
+
+    100% {
+        padding-left: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in {
+    0% {
+        opacity: 0;
+        transform: translateX(8em);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+    }
+}
+
+
+/* Styling The Main Product-box & it's pages */
+
+#product-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gutter);
+    --page-height: clamp(55em, 60vw, 78em);
+}
+
+.product-page {
+    position: relative;
+    width: 100%;
+    height: var(--page-height);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.hero {
+    height: 65em;
+}
+
+/* Styling the image and product info */
+
+.cover-image {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: auto;
+    /* border: 2px solid red; */
+}
+
+.product-info-wrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    box-sizing: border-box;
+    width: fit-content;
+    gap: 1.5em;
+}
+
+.product-name {
+    font-size: clamp(4.1rem, 6vw, 5rem);
+    font-weight: 500;
+    letter-spacing: -1px;
+    line-height: 1.3em;
+}
+
+.product-usp {
+    letter-spacing: -0.1rem;
+    font-size: clamp(1.9rem, 2.5vw, 2.5rem);
+    font-weight: 400;
+}
+
+.five-g {
+    border: 1px solid black;
+    border-radius: 12%/50%;
+    padding: 0.5em 1em;
+    font-size: clamp(1.3rem, 1.5vw, 1.5rem);
+    font-weight: 400;
+    opacity: 0.7;
+}
+
+.five-g.light {
+    border: 1px solid white;
+}
+
+/* Styling all the links */
+
+.cover-link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.cover-link:hover {
+    cursor: pointer;
+}
+
+.cta-link-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: clamp(3.5em, 5vw, 5em);
+    width: fit-content;
+}
+
+.cta-link {
+    position: relative;
+    font-weight: 500;
+    font-size: 1.9rem;
+}
+
+.cta-link::after {
+    font-family: "Poppins", "Roboto", "sans serif";
+    content: ">";
+    position: absolute;
+    top: -0.2em;
+    color: inherit;
+    font-size: 1.2em;
+    padding-left: 0.2em;
+}
+
+/* Setting background images of product-pages */
+
+#iphone .cover-image {
+    background-image: url("images/product_images/phone_images/iphone14.jpg");
+}
+
+#iphone-pro .cover-image {
+    background-image: url("images/product_images/phone_images/iphone_14_pro.jpg");
+}
+
+#ipad .cover-image {
+    background-image: url("images/product_images/phone_images/ipad.jpg");
+}
+
+/* Setting Product info positioning */
+
+.product-page .cover-image {
+    background-position: 50% 100%;
+}
+
+.product-page .product-info-wrapper {
+    bottom: 66%;
+}
+
+#iphone .product-info-wrapper {
+    bottom: 62%;
+}
+
+
+/* Setting page order */
+#iphone {
+    order: 1;
+}
+
+#iphone-pro {
+    order: 2;
+}
+
+#ipad {
+    order: 3;
+}
+
+/* Setting z-index for the product pages */
+
+.cover-image {
+    z-index: 0;
+}
+
+.product-info {
+    z-index: 1;
+}
+
+.cover-link {
+    z-index: 2;
+}
+
+.cta-link,
+.cta-button {
+    z-index: 3;
+}
+
+
+/* Styling The product cards */
+
+#product-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gutter);
+    box-sizing: border-box;
+    padding: 0 var(--gutter);
+}
+
+#product-card-container .product-name {
+    font-size: clamp(3rem, 5vw, 4rem);
+    font-size: 3.5rem;
+}
+
+#product-card-container .product-usp {
+    font-size: clamp(1.6rem, 2.5vw, 2rem);
+    font-size: 1.7rem;
+    letter-spacing: 0.2px;
+}
+
+.product-card .cta-link {
+    font-weight: 400;
+    font-size: 1.6rem;
+}
+
+.product-card {
+    position: relative;
+    width: 100%;
+    height: clamp(45em, 50vw, 60em);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-card .product-info-wrapper {
+    top: 10%;
+}
+
+.product-card .product-name {
+    background-size: contain;
+}
+
+/* Setting background positioning */
+.product-card .cover-image {
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+.product-card .product-name {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    margin-bottom: 0.2em;
+}
+
+/* Giving background images to all cards */
+#ipad-pro .cover-image {
+    background-image: url("images/product_images/desktop_images/ipad_pro.jpg");
+}
+
+#apple-tv .cover-image {
+    background-image: url("images/product_images/desktop_images/apple_tv.jpg");
+}
+
+#apple-watch .cover-image {
+    background-image: url("images/product_images/desktop_images/apple_watch.jpg");
+}
+
+#apple-s8 .cover-image {
+    background-image: url("images/product_images/desktop_images/apple_s8.jpg");
+}
+
+#airpods .cover-image {
+    background-image: url("images/product_images/desktop_images/airpods.jpg");
+}
+
+#mac-info .cover-image {
+    background-image: url("images/product_images/desktop_images/mac_info.png");
+    background-size: contain;
+    position: static;
+    height: 42%;
+    width: 80%;
+}
+
+#mac-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+
+}
+
+/* Setting the after icons of some subtitles */
+
+#ipad-pro .product-usp::after {
+    content: "";
+    background-image: url("images/icons_png/other_icons/m2_processor.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 0.8em;
+    margin-left: 0.5em;
+    position: relative;
+    top: 0.5em;
+}
+
+#apple-tv .product-name {
+    background-image: url("images/icons_png/other_icons/apple_tv_4k.png");
+    height: 1em;
+}
+
+#apple-watch .product-name {
+    background-image: url("images/icons_png/other_icons/apple_watch_ultra.png");
+    height: 1.5em;
+}
+
+#apple-s8 .product-name {
+    background-image: url("images/icons_png/other_icons/apple_watch_s8.png");
+    height: 1.5em;
+}
+
+
+/* Styling image carasoul */
+
+#image-carousel {
+    display: none;
+    --promo-width: clamp(25em, 65vw, 40em);
+    --promo-height: 50em;
+    --promo-total-width: calc(var(--promo-width) + var(--gutter));
+    height: fit-content;
+}
+
+.window-container {
+    position: relative;
+}
+
+#window {
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    scroll-behavior: smooth;
+    display: flex;
+    overflow-x: hidden;
+}
+
+.slider {
+    position: absolute;
+    width: calc((100vw - var(--promo-total-width))/2);
+    height: 100%;
+    top: 0;
+    z-index: 3;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.slider::after {
+    content: "<";
+    font-family: "Advent Pro", "Poppins", "Roboto", "sans serif";
+    font-weight: 600;
+    font-size: 4rem;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-clip: text;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding-right: 0.5em;
+}
+
+.slider.left {
+    left: 0;
+    box-sizing: border-box;
+}
+
+.slider.right::after {
+    content: ">";
+    padding-left: 0.5em;
+    padding-right: 0;
+}
+
+.slider:hover {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.slider.right {
+    right: 0;
+}
+
+.promo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    gap: var(--gutter);
+    margin-left: calc(-1 * (var(--promo-total-width) - ((100vw - var(--promo-total-width))/2)));
+}
+
+.transition {
+    transition: transform 0.8s ease-in-out;
+}
+
+.extra {
+    cursor: pointer;
+}
+
+.promo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: var(--promo-width);
+    height: var(--promo-height);
+    overflow: hidden;
+    opacity: 0.4;
+    transition: opacity 0.6s ease;
+}
+
+.promo .cover-image {
+    background-position: 50% 0%;
+    background-size: cover;
+    position: relative;
+}
+
+.promo .cover-image::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.9));
+}
+
+.promo-clone {
+    display: none;
+}
+
+.promo-container .focus {
+    opacity: 1;
+}
+
+
+.focus .promo-info {
+    bottom: 7%;
+    opacity: 1;
+}
+
+.promo-info {
+    transition-property: bottom, opacity;
+    transition-duration: 0.6s;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 1em;
+    bottom: 0;
+    opacity: 0;
+    /* z-index: 9; */
+}
+
+
+.promo-text {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    width: fit-content;
+    text-align: center;
+    gap: 0.2em;
+    padding: 0 2em;
+    box-sizing: border-box;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    z-index: 1;
+}
+
+
+.cta-button {
+    background-color: var(--light);
+    color: var(--dark);
+    font-size: clamp(1.2rem, 1.5vw, 1.4rem);
+    font-weight: 600;
+    padding: 1em 1.5em;
+    width: fit-content;
+    border-radius: 15%/50%;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.cta-button::after {
+    content: "";
+    background-color: #383838;
+    padding: 0 0.6em;
+    margin-left: 0.6em;
+
+    /* background-image: url("images/play-button.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center */
+
+    /* Shorthand for Above properties (no specific order needed) */
+    background: url("images/icons_png/other_icons/play-button.png") no-repeat center/contain;
+}
+
+.promo-type {
+    font-size: clamp(1.8rem, 2vw, 2rem);
+    font-weight: 600;
+}
+
+.bullet-point {
+    display: none;
+}
+
+.movie-info {
+    position: absolute;
+    top: 5%;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 0 3em;
+}
+
+.tv-icon {
+    background-image: url("images/icons_png/other_icons/apple_tv_icon.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    height: 2.5em;
+    width: 100%;
+}
+
+.movie-name {
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 4em;
+    width: 100%;
+    background-size: contain;
+}
+
+.cta-button:hover {
+    opacity: 0.9;
+}
+
+/* Styling the indicator */
+#slider-indicator {
+    display: flex;
+    height: 4em;
+    height: 5em;
+    overflow: visible;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0 3em;
+    position: relative;
+    /* display: none; */
+}
+
+.indicator-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+
+.indicator-wrapper,
+.indicator-wrapper-clone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    padding: 1em 0.5em;
+    opacity: 0.2;
+    transition: opacity 0.3s ease;
+}
+
+.indicator-wrapper-clone {
+    display: none;
+}
+
+.indicator {
+    border-radius: 50%;
+    height: 0.8em;
+    width: 0.8em;
+    background-color: var(--dark);
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.indicator-wrapper:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.indicator-container .focus {
+    opacity: 0.8;
+}
+
+.indicator-container .focus:hover {
+    opacity: 0.8;
+    cursor: default;
+}
+
+.play-pause-btn {
+    background-image: url("images/icons_png/other_icons/play.png");
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+    height: 3em;
+    width: 3em;
+    cursor: pointer;
+    position: absolute;
+    top: -1.2em;
+    left: 46.5%;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.play {
+    background-image: url("images/icons_png/other_icons/pause.png");
+}
+
+/* Styling the Terms and condition */
+
+#footer {
+    background-color: #F5F5F7;
+    padding: 2em 1em;
+    text-align: left;
+    --gap: 1.5em;
+}
+
+#footer-info-container {
+    margin: auto;
+    width: 98%;
+    max-width: 980px;
+}
+
+.terms-container {
+    width: 100%;
+    overflow: hidden;
+    list-style-type: none;
+}
+
+.terms {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    text-align: left;
+    font-weight: 400;
+    color: #6e6e73;
+    margin-bottom: var(--gap);
+}
+
+
+/* Styling the Footer navigation */
+
+#footer-nav {
+    display: flex;
+    flex-direction: column;
+    margin: 2em 0;
+}
+
+.footer-nav-container {
+    overflow: hidden;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    height: 3.7em;
+    transition-property: max-height;
+    transition-duration: 0.3s;
+}
+
+.footer-nav-heading {
+    padding: 1em 0;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0.7;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.footer-nav-heading h5 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+.footer-nav-heading:hover {
+    opacity: 1;
+}
+
+.plus-btn {
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 50%;
+    transition: transform 0.2s;
+    transform-origin: 50% 50%;
+}
+
+.footer-nav-open .plus-btn {
+    transform: rotate(45deg);
+}
+
+.footer-nav-box-container {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: hidden;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    padding-left: 2em;
+    padding-bottom: 1em;
+}
+
+.footer-nav-link-box {
+    list-style-type: none;
+    cursor: pointer;
+    padding: 0.8em 0;
+}
+
+.footer-nav-open {
+    height: fit-content;
+}
+
+.footer-nav-link {
+    padding: 0;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #424245;
+    letter-spacing: 0;
+    opacity: 1;
+}
+
+.footer-nav-link-box:hover {
+    text-decoration: underline;
+}
+
+/* Styling Copyrights and it links */
+
+#copyright-container {
+    font-size: 1.3rem;
+    color: #6e6e73;
+}
+
+.contact-link {
+    color: var(--light-anchor);
+}
+
+.contact,
+.copyright {
+    padding: 1em 0;
+}
+
+.copyright {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.copyright .footer-nav-box-container {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    height: 100%;
+    gap: 1em;
+}
+
+.copyright .footer-nav-link-box {
+    border-right: 1px solid rgb(196, 196, 196);
+    padding: 0;
+    padding-right: 1em;
+}
+
+/* Setting the clone value to display none */
+
+
+/* Writing media queryies */
+
+@media screen and (min-width: 650px) {
+    #image-carousel {
+        --promo-width: clamp(50em, 80vw, 120em);
+    }
+
+    .promo {
+        aspect-ratio: 1.8/1.05;
+        height: auto;
+    }
+
+    .movie-info {
+        display: none;
+    }
+
+    .promo-info {
+        flex-direction: row-reverse;
+        gap: clamp(2em, 3vw, 4em);
+        padding: 0 clamp(3em, 5vw, 10em);
+        justify-content: flex-end;
+    }
+
+
+    .promo-text {
+        display: block;
+        width: 50%;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: left;
+        padding: 0;
+    }
+
+    .bullet-point {
+        display: inline;
+    }
+
+    .play-pause-btn {
+        top: 10%;
+        bottom: 0;
+        right: 2%;
+        left: auto;
+    }
+
+    #slider-indicator {
+        align-items: center;
+    }
+
+    .indicator-wrapper,
+    .indicator-wrapper-clone {
+        padding: 1em 0.8em;
+    }
+}
+
+@media screen and (min-width: 780px) {
+    #iphone .cover-image {
+        background-image: url("images/product_images/desktop_images/iphone.jpg");
+    }
+
+    #iphone-pro .cover-image {
+        background-image: url("images/product_images/desktop_images/iphone_pro.jpg");
+    }
+
+    #ipad .cover-image {
+        background-image: url("images/product_images/desktop_images/ipad.jpg");
+    }
+
+    .hero {
+        height: 80em;
+    }
+
+    .cover-image {
+        background-size: cover;
+    }
+
+    #iphone .product-info-wrapper {
+        bottom: 65%;
+    }
+
+    #iphone-pro .product-info-wrapper {
+        bottom: 65%;
+    }
+
+    #ipad .product-info-wrapper {
+        bottom: 40%;
+        left: 55%;
+    }
+
+    #product-card-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .terms-container {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    #footer-nav {
+        flex-direction: row;
+    }
+
+    .footer-nav-container .plus-btn {
+        display: none;
+    }
+
+    .nav-group {
+        width: 100%;
+    }
+
+    .footer-nav-container {
+        border: none;
+        max-height: none;
+        height: fit-content;
+
+    }
+
+    .footer-nav-box-container {
+        padding: 0;
+    }
+
+    .footer-nav-heading {
+        opacity: 1;
+        pointer-events: none;
+    }
+
+    #copyright-container {
+        position: relative;
+    }
+
+    .contact {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .country {
+        position: absolute;
+        bottom: 1em;
+        right: 0;
+    }
+
+    .copyright {
+        flex-direction: row;
+    }
+
+}
+
+@media screen and (min-width: 1100px) {
+    :root {
+        --gutter: 1.5rem;
+    }
+
+    .header {
+        --navbar-height: 4.5em;
+        --navbar-max-width: 102em;
+        overflow: visible;
+        transition: max-height 0s;
+    }
+
+    .header-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: none;
+    }
+
+    .nav-mobile-container {
+        display: none;
+    }
+
+    .nav-box-container {
+        width: 100%;
+        height: var(--navbar-height);
+        max-width: var(--navbar-max-width);
+        flex-direction: row;
+        justify-content: space-between;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .nav-link-box {
+        justify-content: center;
+        align-items: center;
+        animation-duration: 0.2s;
+        margin: 0;
+        height: 100%;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+        padding: 0.5em 1.65em;
+        border: none;
+        animation-duration: 0.3s;
+        width: auto;
+        text-align: center;
+    }
+
+    .nav-box-container .icon {
+        height: 1em;
+        width: 1em;
+        display: flex;
+    }
+
+    .curtain {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        animation-duration: 0.2s;
+        height: 100vh;
+        width: 100vw;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        pointer-events: none;
+        transition: opacity 0.3s;
+    }
+
+    .curtain-show {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .search-recent-container {
+        width: 98%;
+        max-width: 70em;
+    }
+
+    .search-container {
+        align-items: center;
+        width: 100%;
+        padding-bottom: 0;
+
+    }
+
+    .search-icon-wrapper {
+        margin: 0;
+        width: 100%;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        animation-duration: 0.5s;
+        border-radius: none;
+        background-color: inherit;
+    }
+
+    .cancel-btn {
+        display: none;
+    }
+
+    .search-icon-wrapper .icon {
+        display: block;
+        padding: 0 1.5em;
+    }
+
+    .recent-container {
+        opacity: 0;
+        pointer-events: none;
+        background-color: white;
+        width: fit-content;
+        border-bottom-left-radius: 2em;
+        border-bottom-right-radius: 2em;
+        padding: 2em 1em;
+        width: 100%;
+        transition: opacity 0.2s;
+    }
+
+    .recent-heading {
+        font-size: 1.2rem;
+        margin-left: 3em;
+        animation-duration: 0.2s;
+        opacity: 0;
+    }
+
+    .recent-search-wrapper {
+        gap: 0.5em;
+        margin: 1em 0;
+    }
+
+    .recent-search {
+        opacity: 0;
+        color: var(--dark);
+        font-size: 1.4rem;
+        padding: 0.5em 4em;
+        animation-duration: 0.2s;
+    }
+
+    .recent-search:hover {
+        background-color: rgb(230, 230, 230);
+        color: var(--light-anchor);
+    }
+
+    .search-container {
+        border: none;
+    }
+
+    .search-icon-wrapper .icon {
+        height: 100%;
+        opacity: 0.5;
+    }
+
+    .curtain-show .recent-container {
+        transition: opacity 0.5s ease 0.2s;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    #product-card-container .product-name {
+        font-size: 4rem;
+    }
+
+    #product-card-container .product-usp {
+        font-size: 2rem;
+        letter-spacing: 0.2px;
+    }
+
+    .product-card .cta-link {
+        font-weight: 400;
+        font-size: 1.9rem;
+    }
+
+    .slider {
+        opacity: 0;
+    }
+
+}
