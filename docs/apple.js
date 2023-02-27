@@ -1,5 +1,3 @@
-console.log("Apple Clone console Window");
-
 const searchBtn = document.querySelector(".search-icon");
 const navCloseBtn = document.querySelector(".close-icon");
 const searchBar = document.querySelector(".search-icon-wrapper");
@@ -17,7 +15,7 @@ const promoInfoArray = [];
 let translateValue = getTranslateValue();
 let promoCount = 1;
 let currentTranslateValue;
-let carouselInterval = 4500;
+let carouselInterval = 3000;
 const playPauseBtn = document.querySelector(".play-pause-btn");
 let carousel = undefined;
 const carouselLeftBtn = document.querySelector(".left.slider");
@@ -123,8 +121,6 @@ Array.from(footerNavHeading).forEach((element) => {
 
 });
 
-
-
 // Making a class of Promo
 class PromoInfo {
     constructor(imageNumber, type, data) {
@@ -140,9 +136,7 @@ class PromoInfo {
 // Function to Start image Carousel
 initializeCarousel();
 
-
 // *********************Defining Functions*******************************
-
 
 // Function to find the animation duration of an element in seconds
 
@@ -327,17 +321,7 @@ function setDelays(reverse) {
     }
 }
 
-
-
-
-
 // IMAGE CAROUSEL
-
-
-
-
-
-
 // Function to append all Promo images to the carousel
 
 function initializeCarousel() {
